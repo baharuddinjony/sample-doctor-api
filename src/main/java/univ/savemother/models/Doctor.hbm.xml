@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 19, 2017 2:10:58 PM by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="Doctor" table="doctor" catalog="test_doctor" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="doctorName" type="string">
+            <column name="doctorName" length="50" not-null="true" />
+        </property>
+        <property name="specialization" type="string">
+            <column name="specialization" length="200" not-null="true" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="50" not-null="true" />
+        </property>
+        <property name="experience" type="string">
+            <column name="experience" length="500" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="50" not-null="true" />
+        </property>
+        <property name="hospitalName" type="string">
+            <column name="hospitalName" length="50" not-null="true" />
+        </property>
+        <property name="hospitalNumber" type="string">
+            <column name="hospitalNumber" length="50" not-null="true" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="50" not-null="true" />
+        </property>
+        <set name="doctorApointments" table="doctor_apointment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="doctorId" not-null="true" />
+            </key>
+            <one-to-many class="DoctorApointment" />
+        </set>
+    </class>
+</hibernate-mapping>
